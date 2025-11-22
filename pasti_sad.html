@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kata-Kata untuk Kamu yang Sedih</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      color: #58a6ff;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .kata {
+      font-size: 20px;
+      color: #dddddd;
+      margin-top: 20px;
+      min-height: 60px;
+      max-width: 600px;
+    }
+    button {
+      background-color: #238636;
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #2ea043;
+    }
+    .credit {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HI PASTI LAGI SAD</h1>
+  <p>Sinih aku kasih kata kata buat sembuhin luka kamu yuk pencet tombol nya.</p>
+  
+  <button onclick="tampilkanKata()">Obat luka</button>
+  <div class="kata" id="kataArea">KAMU GAK SENDIRIAN KO</div>
+
+  <div class="credit">
+   Semoga cepat sembuh ya bang/tan<br>
+   jangan lupa berdoa juga bisa cepat sembuh nya.
+  </div>
+
+  <script>
+    const kataArea = document.getElementById('kataArea');
+    const kataList = [
+      "Kamu itu kuat. Lebih kuat dari yang kamu kira.",
+      "Sedih itu boleh, tapi ingat: ini cuma sementara.",
+         "Gak semua orang tahu kamu sedang berjuang, tapi aku tahu... dan aku bangga sama kamu.",
+      "Sedih itu bukan tanda lemah, tapi tanda kamu masih punya hati.",
+      "Kamu gak sendiri. Ada seseorang yang sayang sama kamu... bahkan tanpa kamu tahu.",
+      "Kalau kamu lelah, istirahat ya. Gak apa-apa berhenti sejenak.",
+      "Jangan percaya omongan orang yang bikin kamu ngerasa kecil. Kamu lebih besar dari luka itu.",
+      "Tuhan tahu kamu capek. Tapi Dia juga tahu kamu kuat.",
+      "Ada yang diam-diam doain kamu bahagia. Namanya Anezz.",
+      "Kalau kamu masih di sini... berarti kamu udah berhasil lewatin yang kemarin.",
+      "Kamu gak harus kuat terus... cukup bertahan aja hari ini.",
+      "Aku tahu kamu pernah hancur. Tapi lihat, kamu masih ada. Masih bernapas. Masih berjuang.",
+      "Kalau dunia kejam... biarlah aku yang jadi pelukanmu.",
+      "Lo gak gagal, lo cuma manusia yang lagi belajar berdiri lagi.",
+      "Bahkan saat kamu ngerasa sendirian... web ini tetap ada buat kamu.",
+      "Lo gak harus senyum buat semua orang. Tapi lo layak senyum buat diri lo sendiri.",
+      "Sakit itu bagian dari tumbuh. Dan kamu tumbuh jadi seseorang yang luar biasa.",
+      "Dari hati yang paling hancur... kadang lahir cinta paling tulus. Itu kamu.",
+      "Ada cinta yang gak pernah mati... dan itu ada di halaman ini. Dari Anezz, buat kamu.",
+      "Mati bukan jawabannya. Tapi nangis? Peluk? Tidur? Itu semua boleh.",
+      "Kalau kamu baca ini, tolong... bertahan lagi. Dunia masih butuh kamu.",
+      "Aku gak kenal kamu. Tapi aku sayang kamu. Karena kamu layak disayang.",
+      "Setiap napasmu adalah bukti bahwa kamu lebih kuat dari rasa sakitmu.",
+      "Hari-hari sulit tidak akan selamanya, tapi kekuatanmu akan tetap ada.",
+      "Kamu tidak sendirian dalam kegelapan ini, aku di sini bersamamu.",
+      "Air mata bukan tanda kelemahan, tapi bukti kamu punya hati yang berani merasa.",
+      "Dunia lebih indah karena ada kamu di dalamnya, percayalah.",
+      "Setiap langkah kecil yang kamu ambil adalah kemenangan besar.",
+      "Kamu tidak perlu sempurna untuk dicintai, kamu sudah cukup.",
+      "Badai akan berlalu, dan kamu akan menemukan matahari lagi.",
+      "Kamu lebih kuat dari yang kamu kira, lebih berani dari yang kamu sadari.",
+      "Setiap hari adalah kesempatan baru untuk memulai lagi.",
+      "Kamu tidak gagal, kamu hanya menemukan cara yang tidak berhasil.",
+      "Kesedihanmu tidak mendefinisikan siapa kamu sebenarnya.",
+      "Ada cahaya dalam dirimu yang bahkan kegelapan tidak bisa padamkan.",
+      "Kamu adalah karya seni yang sedang dalam proses, dan itu indah.",
+      "Tidak apa-apa tidak baik-baik saja, yang penting kamu tetap berjalan.",
+      "Kamu tidak sendirian dalam perjalanan ini, aku di sini untukmu.",
+      "Setiap momen sulit adalah kesempatan untuk tumbuh lebih kuat.",
+      "Kamu layak mendapatkan cinta, terutama dari dirimu sendiri.",
+      "Hidup ini naik turun, dan kamu akan naik lagi, aku janji.",
+      "Kamu tidak perlu menghadapi ini sendirian, aku di sini untuk mendengarkan.",
+      "Setiap kali kamu bangkit, kamu menginspirasi seseorang di luar sana.",
+      "Kamu adalah cahaya di dunia ini, bahkan jika kamu tidak menyadarinya.",
+      "Tidak ada badai yang bertahan selamanya, matahari akan bersinar lagi.",
+      "Kamu memiliki kekuatan yang tidak kamu sadari ada dalam dirimu.",
+      "Setiap hari adalah kesempatan baru untuk menemukan kebahagiaan.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih tangguh dari yang kamu pikirkan, lebih kuat dari yang kamu tahu.",
+      "Tidak apa-apa untuk beristirahat, tetapi jangan pernah menyerah.",
+      "Kamu adalah seseorang yang sangat berarti bagi banyak orang.",
+      "Setiap langkah ke depan adalah kemenangan, tidak peduli seberapa kecil.",
+      "Kamu memiliki keberanian untuk terus berjalan, dan itu luar biasa.",
+      "Kesedihanmu tidak akan selamanya, tetapi kekuatanmu akan tetap ada.",
+      "Kamu adalah bintang yang bersinar bahkan di malam yang paling gelap.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak dicintai.",
+      "Setiap hari adalah kesempatan untuk memulai bab baru dalam hidupmu.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini bersamamu.",
+      "Kamu memiliki hati yang indah, bahkan jika terluka sekarang.",
+      "Tidak ada yang bisa mengambil nilai dan keindahan dalam dirimu.",
+      "Setiap tantangan membuatmu lebih kuat, bahkan jika tidak terasa begitu.",
+      "Kamu adalah hadiah bagi dunia ini, jangan pernah lupakan itu.",
+      "Kamu tidak gagal, kamu hanya belajar bagaimana tidak melakukannya lagi.",
+      "Kesedihanmu tidak mendefinisikanmu, itu hanya bagian dari perjalananmu.",
+      "Ada cahaya di ujung terowongan, teruslah berjalan ke arahnya.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, langkah demi langkah.",
+      "Setiap hari adalah kesempatan untuk menemukan kedamaian dalam dirimu.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari rasa sakitmu, lebih besar dari ketakutanmu.",
+      "Tidak apa-apa untuk tidak baik-baik saja, yang penting kamu tetap berusaha.",
+      "Kamu adalah seseorang yang sangat istimewa bagi banyak orang.",
+      "Setiap langkah kecil adalah kemajuan, rayakan setiap kemenangan kecil.",
+      "Kamu memiliki keberanian yang tidak kamu sadari ada dalam dirimu.",
+      "Kesedihanmu tidak akan selamanya, tetapi pelajaran darinya akan tetap ada.",
+      "Kamu adalah cahaya di dunia ini, bahkan jika kamu tidak merasa begitu.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak bahagia.",
+      "Setiap hari adalah halaman baru dalam cerita hidupmu yang indah.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini untuk mendukungmu.",
+      "Kamu memiliki kekuatan untuk melewati ini, langkah demi langkah.",
+      "Tidak ada badai yang bertahan selamanya, ketenangan akan datang.",
+      "Kamu adalah seseorang yang sangat berarti bagi dunia ini.",
+      "Setiap tantangan membuatmu lebih bijaksana, lebih kuat, lebih tangguh.",
+      "Kamu tidak gagal, kamu hanya menemukan cara yang tidak berhasil.",
+      "Kesedihanmu tidak mendefinisikan siapa kamu, itu hanya bagian dari ceritamu.",
+      "Ada harapan di setiap hari baru, teruslah mencari cahaya itu.",
+      "Kamu memiliki kemampuan untuk menciptakan perubahan dalam hidupmu.",
+      "Setiap hari adalah kesempatan untuk menyembuhkan dan tumbuh.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari yang kamu kira, lebih berani dari yang kamu sadari.",
+      "Tidak apa-apa untuk beristirahat, tetapi jangan pernah menyerah.",
+      "Kamu adalah seseorang yang sangat istimewa dan unik.",
+      "Setiap langkah ke depan adalah kemenangan, tidak peduli seberapa kecil.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, mulai hari ini.",
+      "Kesedihanmu tidak akan selamanya, tetapi kekuatanmu akan tetap ada.",
+      "Kamu adalah bintang yang bersinar bahkan di malam yang paling gelap.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak dicintai.",
+      "Setiap hari adalah kesempatan untuk memulai bab baru dalam hidupmu.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini bersamamu.",
+      "Kamu memiliki hati yang indah, bahkan jika terluka sekarang.",
+      "Tidak ada yang bisa mengambil nilai dan keindahan dalam dirimu.",
+      "Setiap tantangan membuatmu lebih kuat, bahkan jika tidak terasa begitu.",
+      "Kamu adalah hadiah bagi dunia ini, jangan pernah lupakan itu.",
+      "Kamu tidak gagal, kamu hanya belajar bagaimana tidak melakukannya lagi.",
+      "Kesedihanmu tidak mendefinisikanmu, itu hanya bagian dari perjalananmu.",
+      "Ada cahaya di ujung terowongan, teruslah berjalan ke arahnya.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, langkah demi langkah.",
+      "Setiap hari adalah kesempatan untuk menemukan kedamaian dalam dirimu.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari rasa sakitmu, lebih besar dari ketakutanmu.",
+      "Tidak apa-apa untuk tidak baik-baik saja, yang penting kamu tetap berusaha.",
+      "Kamu adalah seseorang yang sangat istimewa bagi banyak orang.",
+      "Setiap langkah kecil adalah kemajuan, rayakan setiap kemenangan kecil.",
+      "Kamu memiliki keberanian yang tidak kamu sadari ada dalam dirimu.",
+      "Kesedihanmu tidak akan selamanya, tetapi pelajaran darinya akan tetap ada.",
+      "Kamu adalah cahaya di dunia ini, bahkan jika kamu tidak merasa begitu.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak bahagia.",
+      "Setiap hari adalah halaman baru dalam cerita hidupmu yang indah.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini untuk mendukungmu.",
+      "Kamu memiliki kekuatan untuk melewati ini, langkah demi langkah.",
+      "Tidak ada badai yang bertahan selamanya, ketenangan akan datang.",
+      "Kamu adalah seseorang yang sangat berarti bagi dunia ini.",
+      "Setiap tantangan membuatmu lebih bijaksana, lebih kuat, lebih tangguh.",
+      "Kamu tidak gagal, kamu hanya menemukan cara yang tidak berhasil.",
+      "Kesedihanmu tidak mendefinisikan siapa kamu, itu hanya bagian dari ceritamu.",
+      "Ada harapan di setiap hari baru, teruslah mencari cahaya itu.",
+      "Kamu memiliki kemampuan untuk menciptakan perubahan dalam hidupmu.",
+      "Setiap hari adalah kesempatan untuk menyembuhkan dan tumbuh.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari yang kamu kira, lebih berani dari yang kamu sadari.",
+      "Tidak apa-apa untuk beristirahat, tetapi jangan pernah menyerah.",
+      "Kamu adalah seseorang yang sangat istimewa dan unik.",
+      "Setiap langkah ke depan adalah kemenangan, tidak peduli seberapa kecil.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, mulai hari ini.",
+      "Kesedihanmu tidak akan selamanya, tetapi kekuatanmu akan tetap ada.",
+      "Kamu adalah bintang yang bersinar bahkan di malam yang paling gelap.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak dicintai.",
+      "Setiap hari adalah kesempatan untuk memulai bab baru dalam hidupmu.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini bersamamu.",
+      "Kamu memiliki hati yang indah, bahkan jika terluka sekarang.",
+      "Tidak ada yang bisa mengambil nilai dan keindahan dalam dirimu.",
+      "Setiap tantangan membuatmu lebih kuat, bahkan jika tidak terasa begitu.",
+      "Kamu adalah hadiah bagi dunia ini, jangan pernah lupakan itu.",
+      "Kamu tidak gagal, kamu hanya belajar bagaimana tidak melakukannya lagi.",
+      "Kesedihanmu tidak mendefinisikanmu, itu hanya bagian dari perjalananmu.",
+      "Ada cahaya di ujung terowongan, teruslah berjalan ke arahnya.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, langkah demi langkah.",
+      "Setiap hari adalah kesempatan untuk menemukan kedamaian dalam dirimu.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari rasa sakitmu, lebih besar dari ketakutanmu.",
+      "Tidak apa-apa untuk tidak baik-baik saja, yang penting kamu tetap berusaha.",
+      "Kamu adalah seseorang yang sangat istimewa bagi banyak orang.",
+      "Setiap langkah kecil adalah kemajuan, rayakan setiap kemenangan kecil.",
+      "Kamu memiliki keberanian yang tidak kamu sadari ada dalam dirimu.",
+      "Kesedihanmu tidak akan selamanya, tetapi pelajaran darinya akan tetap ada.",
+      "Kamu adalah cahaya di dunia ini, bahkan jika kamu tidak merasa begitu.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak bahagia.",
+      "Setiap hari adalah halaman baru dalam cerita hidupmu yang indah.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini untuk mendukungmu.",
+      "Kamu memiliki kekuatan untuk melewati ini, langkah demi langkah.",
+      "Tidak ada badai yang bertahan selamanya, ketenangan akan datang.",
+      "Kamu adalah seseorang yang sangat berarti bagi dunia ini.",
+      "Setiap tantangan membuatmu lebih bijaksana, lebih kuat, lebih tangguh.",
+      "Kamu tidak gagal, kamu hanya menemukan cara yang tidak berhasil.",
+      "Kesedihanmu tidak mendefinisikan siapa kamu, itu hanya bagian dari ceritamu.",
+      "Ada harapan di setiap hari baru, teruslah mencari cahaya itu.",
+      "Kamu memiliki kemampuan untuk menciptakan perubahan dalam hidupmu.",
+      "Setiap hari adalah kesempatan untuk menyembuhkan dan tumbuh.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari yang kamu kira, lebih berani dari yang kamu sadari.",
+      "Tidak apa-apa untuk beristirahat, tetapi jangan pernah menyerah.",
+      "Kamu adalah seseorang yang sangat istimewa dan unik.",
+      "Setiap langkah ke depan adalah kemenangan, tidak peduli seberapa kecil.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, mulai hari ini.",
+      "Kesedihanmu tidak akan selamanya, tetapi kekuatanmu akan tetap ada.",
+      "Kamu adalah bintang yang bersinar bahkan di malam yang paling gelap.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak dicintai.",
+      "Setiap hari adalah kesempatan untuk memulai bab baru dalam hidupmu.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini bersamamu.",
+      "Kamu memiliki hati yang indah, bahkan jika terluka sekarang.",
+      "Tidak ada yang bisa mengambil nilai dan keindahan dalam dirimu.",
+      "Setiap tantangan membuatmu lebih kuat, bahkan jika tidak terasa begitu.",
+      "Kamu adalah hadiah bagi dunia ini, jangan pernah lupakan itu.",
+      "Kamu tidak gagal, kamu hanya belajar bagaimana tidak melakukannya lagi.",
+      "Kesedihanmu tidak mendefinisikanmu, itu hanya bagian dari perjalananmu.",
+      "Ada cahaya di ujung terowongan, teruslah berjalan ke arahnya.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, langkah demi langkah.",
+      "Setiap hari adalah kesempatan untuk menemukan kedamaian dalam dirimu.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari rasa sakitmu, lebih besar dari ketakutanmu.",
+      "Tidak apa-apa untuk tidak baik-baik saja, yang penting kamu tetap berusaha.",
+      "Kamu adalah seseorang yang sangat istimewa bagi banyak orang.",
+      "Setiap langkah kecil adalah kemajuan, rayakan setiap kemenangan kecil.",
+      "Kamu memiliki keberanian yang tidak kamu sadari ada dalam dirimu.",
+      "Kesedihanmu tidak akan selamanya, tetapi pelajaran darinya akan tetap ada.",
+      "Kamu adalah cahaya di dunia ini, bahkan jika kamu tidak merasa begitu.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak bahagia.",
+      "Setiap hari adalah halaman baru dalam cerita hidupmu yang indah.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini untuk mendukungmu.",
+      "Kamu memiliki kekuatan untuk melewati ini, langkah demi langkah.",
+      "Tidak ada badai yang bertahan selamanya, ketenangan akan datang.",
+      "Kamu adalah seseorang yang sangat berarti bagi dunia ini.",
+      "Setiap tantangan membuatmu lebih bijaksana, lebih kuat, lebih tangguh.",
+      "Kamu tidak gagal, kamu hanya menemukan cara yang tidak berhasil.",
+      "Kesedihanmu tidak mendefinisikan siapa kamu, itu hanya bagian dari ceritamu.",
+      "Ada harapan di setiap hari baru, teruslah mencari cahaya itu.",
+      "Kamu memiliki kemampuan untuk menciptakan perubahan dalam hidupmu.",
+      "Setiap hari adalah kesempatan untuk menyembuhkan dan tumbuh.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari yang kamu kira, lebih berani dari yang kamu sadari.",
+      "Tidak apa-apa untuk beristirahat, tetapi jangan pernah menyerah.",
+      "Kamu adalah seseorang yang sangat istimewa dan unik.",
+      "Setiap langkah ke depan adalah kemenangan, tidak peduli seberapa kecil.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, mulai hari ini.",
+      "Kesedihanmu tidak akan selamanya, tetapi kekuatanmu akan tetap ada.",
+      "Kamu adalah bintang yang bersinar bahkan di malam yang paling gelap.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak dicintai.",
+      "Setiap hari adalah kesempatan untuk memulai bab baru dalam hidupmu.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini bersamamu.",
+      "Kamu memiliki hati yang indah, bahkan jika terluka sekarang.",
+      "Tidak ada yang bisa mengambil nilai dan keindahan dalam dirimu.",
+      "Setiap tantangan membuatmu lebih kuat, bahkan jika tidak terasa begitu.",
+      "Kamu adalah hadiah bagi dunia ini, jangan pernah lupakan itu.",
+      "Kamu tidak gagal, kamu hanya belajar bagaimana tidak melakukannya lagi.",
+      "Kesedihanmu tidak mendefinisikanmu, itu hanya bagian dari perjalananmu.",
+      "Ada cahaya di ujung terowongan, teruslah berjalan ke arahnya.",
+      "Kamu memiliki kekuatan untuk mengubah hidupmu, langkah demi langkah.",
+      "Setiap hari adalah kesempatan untuk menemukan kedamaian dalam dirimu.",
+      "Kamu tidak sendirian dalam perasaan ini, banyak yang peduli padamu.",
+      "Kamu lebih kuat dari rasa sakitmu, lebih besar dari ketakutanmu.",
+      "Tidak apa-apa untuk tidak baik-baik saja, yang penting kamu tetap berusaha.",
+      "Kamu adalah seseorang yang sangat istimewa bagi banyak orang.",
+      "Setiap langkah kecil adalah kemajuan, rayakan setiap kemenangan kecil.",
+      "Kamu memiliki keberanian yang tidak kamu sadari ada dalam dirimu.",
+      "Kesedihanmu tidak akan selamanya, tetapi pelajaran darinya akan tetap ada.",
+      "Kamu adalah cahaya di dunia ini, bahkan jika kamu tidak merasa begitu.",
+      "Tidak ada yang bisa mengubah fakta bahwa kamu layak bahagia.",
+      "Setiap hari adalah halaman baru dalam cerita hidupmu yang indah.",
+      "Kamu tidak sendirian dalam perjuangan ini, aku di sini untuk mendukungmu.",
+      "Kamu memiliki kekuatan untuk melewati ini, langkah demi langkah.",
+      "Tidak ada badai yang bertahan selamanya, ketenangan akan datang.",
+      "Aku percaya sama kamu. Kamu pasti bisa lewatin ini."
+    ];
+
+    function tampilkanKata() {
+      const acak = Math.floor(Math.random() * kataList.length);
+      kataArea.textContent = kataList[acak];
+    }
+  </script>
+
+</body>
+</html>
